@@ -1,24 +1,61 @@
-using Entitas;
+using System;
+using Sources.Settings;
+using Sources.Systems;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace Sources.MonoBehaviours
 {
-    private Systems _systems;
-    [SerializeField] private FloatingJoystick floatingJoystick;
-    [SerializeField] private GameObject playerObject;
-
-
-    private void Awake()
+    public class GameManager : MonoBehaviour
     {
-        var contexts = Contexts.sharedInstance;
-        _systems = new Feature("Game_Systems")
-            .Add(new MovementSystems(contexts, floatingJoystick, playerObject));
-        _systems.Initialize();
-    }
+        private Entitas.Systems _systems;
+        private Entitas.Systems _inputSystems;
+        private Entitas.Systems _physicsSystems;
+        [SerializeField] private FloatingJoystick floatingJoystick;
+        [SerializeField] private GameObject playerObject;
+        [SerializeField] private GameSettings gameSettings;
+        [SerializeField] private Transform monsterSpawnPosition;
 
-    private void Update()
-    {
-        _systems.Execute();
-        _systems.Cleanup();
+
+        private void Awake()
+        {
+            var contexts = Contexts.sharedInstance;
+
+            _inputSystems = new Feature("Input_Systems")
+                .Add(new ListenJoystickSystem(contexts, floatingJoystick))
+                .Add(new ProgressCollisionSystem(contexts));
+
+            _physicsSystems = new Feature("Physics_Systems")
+                .Add(new PhysicsMoveSystem(contexts))
+                .Add(new PhysicsVelocityLimitSystem(contexts));
+
+            _systems = new Feature("Game_Systems")
+                .Add(new CreatePlayerSystem(contexts, playerObject, gameSettings))
+                .Add(new MonsterSpawnSystem(contexts, monsterSpawnPosition, gameSettings))
+                .Add(new PlayerJoystickControlSystem(contexts))
+                .Add(new UpdateViewPositionSystem(contexts))
+                .Add(new MoveSystem(contexts))
+                .Add(new MovementAnimationSystem(contexts))
+                .Add(new MonsterNavmeshSystem(contexts))
+                .Add(new CalculateForwardSystem(contexts));
+
+            _inputSystems.Initialize();
+            _physicsSystems.Initialize();
+            _systems.Initialize();
+        }
+
+        private void Update()
+        {
+            _inputSystems.Execute();
+            _systems.Execute();
+
+            _inputSystems.Cleanup();
+            _systems.Cleanup();
+        }
+
+        private void FixedUpdate()
+        {
+            _physicsSystems.Execute();
+            _physicsSystems.Cleanup();
+        }
     }
 }

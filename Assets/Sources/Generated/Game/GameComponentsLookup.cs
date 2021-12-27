@@ -8,24 +8,45 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int MovementDirection = 0;
-    public const int Position = 1;
-    public const int Speed = 2;
-    public const int View = 3;
+    public const int Animation = 0;
+    public const int Monster = 1;
+    public const int MonsterSpawn = 2;
+    public const int MonsterTarget = 3;
+    public const int MovementDirection = 4;
+    public const int Player = 5;
+    public const int Position = 6;
+    public const int Rigidbody = 7;
+    public const int Speed = 8;
+    public const int VelocityLimit = 9;
+    public const int View = 10;
 
-    public const int TotalComponents = 4;
+    public const int TotalComponents = 11;
 
     public static readonly string[] componentNames = {
+        "Animation",
+        "Monster",
+        "MonsterSpawn",
+        "MonsterTarget",
         "MovementDirection",
+        "Player",
         "Position",
+        "Rigidbody",
         "Speed",
+        "VelocityLimit",
         "View"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(AnimationComponent),
+        typeof(Monster),
+        typeof(MonsterSpawnComponent),
+        typeof(MonsterTarget),
         typeof(MovementDirectionComponent),
+        typeof(Player),
         typeof(PositionComponent),
+        typeof(RigidbodyComponent),
         typeof(SpeedComponent),
+        typeof(VelocityLimit),
         typeof(ViewComponent)
     };
 }

@@ -21,9 +21,9 @@ namespace Sources.Systems
 
         protected override void Execute(List<GameEntity> entities)
         {
-            foreach (var e in entities)
+            foreach (var entity in entities)
             {
-                e.view.value.transform.position = e.position.value;
+                entity.view.Value.transform.position = entity.position.Value;
             }
         }
     }

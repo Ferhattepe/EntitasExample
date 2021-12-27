@@ -14,14 +14,14 @@ public partial class GameEntity {
     public void AddSpeed(float newValue) {
         var index = GameComponentsLookup.Speed;
         var component = (SpeedComponent)CreateComponent(index, typeof(SpeedComponent));
-        component.value = newValue;
+        component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceSpeed(float newValue) {
         var index = GameComponentsLookup.Speed;
         var component = (SpeedComponent)CreateComponent(index, typeof(SpeedComponent));
-        component.value = newValue;
+        component.Value = newValue;
         ReplaceComponent(index, component);
     }
 
