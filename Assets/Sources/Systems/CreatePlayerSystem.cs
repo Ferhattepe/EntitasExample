@@ -22,11 +22,10 @@ namespace Sources.Systems
         {
             var entity = _contexts.game.CreateEntity();
             entity.isPlayer = true;
-            entity.isMonsterTarget = true;
             entity.isAlive = true;
             entity.AddView(_playerObject);
             entity.AddPosition(_playerObject.transform.position);
-            entity.AddPlayerTarget(null);
+            entity.AddTarget(null);
             entity.AddSpeed(_gameSettings.player.speed);
             entity.AddMovementDirection(Vector3.zero);
             entity.AddAnimation(_playerObject.GetComponent<Animator>());

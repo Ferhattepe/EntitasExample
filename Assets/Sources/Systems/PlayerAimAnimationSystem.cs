@@ -14,7 +14,8 @@ namespace Sources.Systems
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
-            return context.CreateCollector(GameMatcher.PlayerTarget);
+            return context.CreateCollector(GameMatcher.AllOf(GameMatcher.Player, GameMatcher.Target,
+                GameMatcher.Animation));
         }
 
         protected override bool Filter(GameEntity entity)
@@ -26,7 +27,7 @@ namespace Sources.Systems
         {
             foreach (var entity in entities)
             {
-                entity.isAim = entity.playerTarget.Value != null;
+                entity.isAim = entity.target.Value != null;
                 entity.animation.Value.SetBool(AimKey, entity.isAim);
             }
         }

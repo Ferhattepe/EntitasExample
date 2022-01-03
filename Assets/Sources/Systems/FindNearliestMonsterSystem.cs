@@ -35,8 +35,8 @@ namespace Sources.Systems
                     }
                 }
 
-                if (nearliestTarget != playerEntity.playerTarget.Value)
-                    playerEntity.ReplacePlayerTarget(nearliestTarget);
+                if (nearliestTarget != playerEntity.target.Value)
+                    playerEntity.ReplaceTarget(nearliestTarget);
             }
         }
     }

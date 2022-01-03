@@ -21,22 +21,16 @@ public class Alive : IComponent
 {
 }
 
-// Monster target flag
 [Game]
-public class MonsterTarget : IComponent
+public class TargetComponent : IComponent
 {
+    public Transform Value;
 }
 
 // Player aim target flag
 [Game]
 public class Aim : IComponent
 {
-}
-
-[Game]
-public class PlayerTargetComponent : IComponent
-{
-    public Transform Value;
 }
 
 [Game]

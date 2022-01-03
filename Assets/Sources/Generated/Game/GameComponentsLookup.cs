@@ -14,17 +14,16 @@ public static class GameComponentsLookup {
     public const int LookDirection = 3;
     public const int Monster = 4;
     public const int MonsterSpawn = 5;
-    public const int MonsterTarget = 6;
-    public const int MovementDirection = 7;
-    public const int Player = 8;
-    public const int PlayerTarget = 9;
-    public const int Position = 10;
-    public const int Rigidbody = 11;
-    public const int Speed = 12;
-    public const int VelocityLimit = 13;
-    public const int View = 14;
+    public const int MovementDirection = 6;
+    public const int Player = 7;
+    public const int Position = 8;
+    public const int Rigidbody = 9;
+    public const int Speed = 10;
+    public const int Target = 11;
+    public const int VelocityLimit = 12;
+    public const int View = 13;
 
-    public const int TotalComponents = 15;
+    public const int TotalComponents = 14;
 
     public static readonly string[] componentNames = {
         "Aim",
@@ -33,13 +32,12 @@ public static class GameComponentsLookup {
         "LookDirection",
         "Monster",
         "MonsterSpawn",
-        "MonsterTarget",
         "MovementDirection",
         "Player",
-        "PlayerTarget",
         "Position",
         "Rigidbody",
         "Speed",
+        "Target",
         "VelocityLimit",
         "View"
     };
@@ -51,13 +49,12 @@ public static class GameComponentsLookup {
         typeof(LookDirectionComponent),
         typeof(Monster),
         typeof(MonsterSpawnComponent),
-        typeof(MonsterTarget),
         typeof(MovementDirectionComponent),
         typeof(Player),
-        typeof(PlayerTargetComponent),
         typeof(PositionComponent),
         typeof(RigidbodyComponent),
         typeof(SpeedComponent),
+        typeof(TargetComponent),
         typeof(VelocityLimit),
         typeof(ViewComponent)
     };

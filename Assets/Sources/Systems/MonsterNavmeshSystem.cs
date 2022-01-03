@@ -10,9 +10,8 @@ namespace Sources.Systems
 
         public MonsterNavmeshSystem(Contexts contexts)
         {
-            _monsters = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.MovementDirection, GameMatcher.Monster,
-                GameMatcher.View));
-            _targets = contexts.game.GetGroup(GameMatcher.MonsterTarget);
+            _monsters = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Monster, GameMatcher.Alive));
+            _targets = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Player, GameMatcher.Alive));
         }
 
         public void Execute()

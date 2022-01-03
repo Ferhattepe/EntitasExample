@@ -1,4 +1,3 @@
-using System;
 using Sources.Settings;
 using Sources.Systems;
 using UnityEngine;

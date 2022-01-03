@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public PlayerTargetComponent playerTarget { get { return (PlayerTargetComponent)GetComponent(GameComponentsLookup.PlayerTarget); } }
-    public bool hasPlayerTarget { get { return HasComponent(GameComponentsLookup.PlayerTarget); } }
+    public TargetComponent target { get { return (TargetComponent)GetComponent(GameComponentsLookup.Target); } }
+    public bool hasTarget { get { return HasComponent(GameComponentsLookup.Target); } }
 
-    public void AddPlayerTarget(UnityEngine.Transform newValue) {
-        var index = GameComponentsLookup.PlayerTarget;
-        var component = (PlayerTargetComponent)CreateComponent(index, typeof(PlayerTargetComponent));
+    public void AddTarget(UnityEngine.Transform newValue) {
+        var index = GameComponentsLookup.Target;
+        var component = (TargetComponent)CreateComponent(index, typeof(TargetComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplacePlayerTarget(UnityEngine.Transform newValue) {
-        var index = GameComponentsLookup.PlayerTarget;
-        var component = (PlayerTargetComponent)CreateComponent(index, typeof(PlayerTargetComponent));
+    public void ReplaceTarget(UnityEngine.Transform newValue) {
+        var index = GameComponentsLookup.Target;
+        var component = (TargetComponent)CreateComponent(index, typeof(TargetComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }
 
-    public void RemovePlayerTarget() {
-        RemoveComponent(GameComponentsLookup.PlayerTarget);
+    public void RemoveTarget() {
+        RemoveComponent(GameComponentsLookup.Target);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherPlayerTarget;
+    static Entitas.IMatcher<GameEntity> _matcherTarget;
 
-    public static Entitas.IMatcher<GameEntity> PlayerTarget {
+    public static Entitas.IMatcher<GameEntity> Target {
         get {
-            if (_matcherPlayerTarget == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.PlayerTarget);
+            if (_matcherTarget == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Target);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherPlayerTarget = matcher;
+                _matcherTarget = matcher;
             }
 
-            return _matcherPlayerTarget;
+            return _matcherTarget;
         }
     }
 }
