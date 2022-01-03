@@ -15,10 +15,28 @@ public class Monster : IComponent
 {
 }
 
+// Alive flag
+[Game]
+public class Alive : IComponent
+{
+}
+
 // Monster target flag
 [Game]
 public class MonsterTarget : IComponent
 {
+}
+
+// Player aim target flag
+[Game]
+public class Aim : IComponent
+{
+}
+
+[Game]
+public class PlayerTargetComponent : IComponent
+{
+    public Transform Value;
 }
 
 [Game]
@@ -71,6 +89,12 @@ public class JoystickInputComponent : IComponent
 
 [Game]
 public class MovementDirectionComponent : IComponent
+{
+    public Vector3 Value;
+}
+
+[Game]
+public class LookDirectionComponent : IComponent
 {
     public Vector3 Value;
 }

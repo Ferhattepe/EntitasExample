@@ -36,7 +36,9 @@ namespace Sources.MonoBehaviours
                 .Add(new MoveSystem(contexts))
                 .Add(new MovementAnimationSystem(contexts))
                 .Add(new MonsterNavmeshSystem(contexts))
-                .Add(new CalculateForwardSystem(contexts));
+                .Add(new FindNearliestMonsterSystem(contexts, gameSettings))
+                .Add(new PlayerAimAnimationSystem(contexts))
+                .Add(new CalculatePlayerForwardSystem(contexts, gameSettings));
 
             _inputSystems.Initialize();
             _physicsSystems.Initialize();

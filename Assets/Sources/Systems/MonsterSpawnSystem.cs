@@ -30,6 +30,7 @@ namespace Sources.Systems
                 var view = GameObject.Instantiate(_gameSettings.monster.prefab, _spawnPoint);
                 var entity = _contexts.game.CreateEntity();
                 entity.isMonster = true;
+                entity.isAlive = true;
                 entity.AddView(view);
                 entity.AddRigidbody(view.GetComponent<Rigidbody>());
                 entity.AddVelocityLimit(_gameSettings.monster.velocityLimit);
