@@ -9,7 +9,8 @@ namespace Sources.Systems
 
         public MonsterNavmeshSystem(Contexts contexts)
         {
-            _monsters = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Monster, GameMatcher.Alive));
+            _monsters = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Monster, GameMatcher.MovementDirection,
+                GameMatcher.Alive));
         }
 
         public void Execute()
@@ -20,7 +21,7 @@ namespace Sources.Systems
                 if (nearliestTarget != null)
                 {
                     var direction =
-                        (nearliestTarget.position - entity.view.Value.transform.position)
+                        (nearliestTarget.view.Value.transform.position - entity.view.Value.transform.position)
                         .normalized;
                     direction.y = 0;
                     entity.ReplaceMovementDirection(direction);

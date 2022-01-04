@@ -29,7 +29,7 @@ namespace Sources.Systems
 
                 foreach (var entity in _monsters.GetEntities())
                 {
-                    Transform nearliestTarget = null;
+                    GameEntity nearliestTarget = null;
                     var minDistance = float.MaxValue;
                     foreach (var target in targets)
                     {
@@ -38,7 +38,7 @@ namespace Sources.Systems
                         if (distance <= minDistance)
                         {
                             minDistance = distance;
-                            nearliestTarget = target.view.Value.transform;
+                            nearliestTarget = target;
                         }
                     }
 

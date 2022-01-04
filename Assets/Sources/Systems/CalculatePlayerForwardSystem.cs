@@ -28,7 +28,8 @@ namespace Sources.Systems
                 }
                 else
                 {
-                    var direction = entity.target.Value.position - entity.view.Value.transform.position;
+                    var direction = entity.target.Value.view.Value.transform.position -
+                                    entity.view.Value.transform.position;
                     direction.y = 0;
                     entity.view.Value.transform.forward = Vector3.Lerp(entity.view.Value.transform.forward,
                         direction.normalized, Time.deltaTime * _settings.player.rotationSpeed);

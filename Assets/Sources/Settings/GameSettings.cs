@@ -16,6 +16,7 @@ namespace Sources.Settings
             public float detectionDistance;
             public float rotationSpeed;
             public float detectionInterval;
+            public int baseHealth;
         }
 
         [Serializable]

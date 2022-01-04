@@ -23,7 +23,7 @@ namespace Sources.Systems
             foreach (var playerEntity in _player.GetEntities())
             {
                 var minDistance = _settings.player.detectionDistance;
-                Transform nearliestTarget = null;
+                GameEntity nearliestTarget = null;
                 foreach (var monsterEntity in monsters)
                 {
                     var distance = Vector3.Distance(monsterEntity.view.Value.transform.position
@@ -31,7 +31,7 @@ namespace Sources.Systems
                     if (distance < minDistance)
                     {
                         minDistance = distance;
-                        nearliestTarget = monsterEntity.view.Value.transform;
+                        nearliestTarget = monsterEntity;
                     }
                 }
 

@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public TargetComponent target { get { return (TargetComponent)GetComponent(GameComponentsLookup.Target); } }
-    public bool hasTarget { get { return HasComponent(GameComponentsLookup.Target); } }
+    public CurrentHealthComponent currentHealth { get { return (CurrentHealthComponent)GetComponent(GameComponentsLookup.CurrentHealth); } }
+    public bool hasCurrentHealth { get { return HasComponent(GameComponentsLookup.CurrentHealth); } }
 
-    public void AddTarget(GameEntity newValue) {
-        var index = GameComponentsLookup.Target;
-        var component = (TargetComponent)CreateComponent(index, typeof(TargetComponent));
+    public void AddCurrentHealth(int newValue) {
+        var index = GameComponentsLookup.CurrentHealth;
+        var component = (CurrentHealthComponent)CreateComponent(index, typeof(CurrentHealthComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceTarget(GameEntity newValue) {
-        var index = GameComponentsLookup.Target;
-        var component = (TargetComponent)CreateComponent(index, typeof(TargetComponent));
+    public void ReplaceCurrentHealth(int newValue) {
+        var index = GameComponentsLookup.CurrentHealth;
+        var component = (CurrentHealthComponent)CreateComponent(index, typeof(CurrentHealthComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveTarget() {
-        RemoveComponent(GameComponentsLookup.Target);
+    public void RemoveCurrentHealth() {
+        RemoveComponent(GameComponentsLookup.CurrentHealth);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherTarget;
+    static Entitas.IMatcher<GameEntity> _matcherCurrentHealth;
 
-    public static Entitas.IMatcher<GameEntity> Target {
+    public static Entitas.IMatcher<GameEntity> CurrentHealth {
         get {
-            if (_matcherTarget == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Target);
+            if (_matcherCurrentHealth == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.CurrentHealth);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherTarget = matcher;
+                _matcherCurrentHealth = matcher;
             }
 
-            return _matcherTarget;
+            return _matcherCurrentHealth;
         }
     }
 }

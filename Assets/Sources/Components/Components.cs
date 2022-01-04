@@ -2,6 +2,7 @@ using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using Entitas.Unity;
 using UnityEngine;
+using UnityEngine.UI;
 
 // Player flag
 [Game]
@@ -24,7 +25,7 @@ public class Alive : IComponent
 [Game]
 public class TargetComponent : IComponent
 {
-    public Transform Value;
+    public GameEntity Value;
 }
 
 [Game]
@@ -99,6 +100,24 @@ public class JoystickInputComponent : IComponent
 public class MovementDirectionComponent : IComponent
 {
     public Vector3 Value;
+}
+
+[Game]
+public class CurrentHealthComponent : IComponent
+{
+    public int Value;
+}
+
+[Game]
+public class BaseHealthComponent : IComponent
+{
+    public int Value;
+}
+
+[Game]
+public class HealthViewComponent : IComponent
+{
+    public Slider Slider;
 }
 
 [Game]
