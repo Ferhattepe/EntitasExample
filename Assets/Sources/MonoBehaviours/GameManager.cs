@@ -34,6 +34,7 @@ namespace Sources.MonoBehaviours
                 .Add(new UpdateViewPositionSystem(contexts))
                 .Add(new MoveSystem(contexts))
                 .Add(new MovementAnimationSystem(contexts))
+                .Add(new MonsterFindTargetSystem(contexts, gameSettings))
                 .Add(new MonsterNavmeshSystem(contexts))
                 .Add(new FindNearliestMonsterSystem(contexts, gameSettings))
                 .Add(new PlayerAimAnimationSystem(contexts))

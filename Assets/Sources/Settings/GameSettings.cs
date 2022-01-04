@@ -15,6 +15,7 @@ namespace Sources.Settings
             public float speed;
             public float detectionDistance;
             public float rotationSpeed;
+            public float detectionInterval;
         }
 
         [Serializable]
@@ -24,6 +25,10 @@ namespace Sources.Settings
             public float speed;
             public float spawnInterval;
             public float velocityLimit;
+            public float detectionInterval;
+            public float attackRange;
+            public float attackInterval;
+            public float attackDelay;
         }
     }
 }

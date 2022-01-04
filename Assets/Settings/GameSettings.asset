@@ -16,8 +16,10 @@ MonoBehaviour:
     speed: 5
     detectionDistance: 10
     rotationSpeed: 10
+    detectionInterval: 0
   monster:
     prefab: {fileID: 3138077149829896246, guid: fdbd534f52aaea74e87de828c7a63968, type: 3}
     speed: 1000
     spawnInterval: 0.2
     velocityLimit: 1
+    detectionInterval: 1

@@ -27,6 +27,20 @@ public class TargetComponent : IComponent
     public Transform Value;
 }
 
+[Game]
+public class AttackStateComponent : IComponent
+{
+    public float ExecutionTime;
+}
+
+[Game]
+public class AttackDataComponent : IComponent
+{
+    public float Interval;
+    public float Range;
+    public float LastTime;
+}
+
 // Player aim target flag
 [Game]
 public class Aim : IComponent
