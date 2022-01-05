@@ -34,12 +34,31 @@ public class AttackStateComponent : IComponent
     public float ExecutionTime;
 }
 
+
+[Game]
+public class NextAttackTimeComponent : IComponent
+{
+    public float Value;
+}
+
 [Game]
 public class AttackDataComponent : IComponent
 {
     public float Interval;
     public float Range;
-    public float LastTime;
+    public float AttackDelay;
+}
+
+[Game]
+public class FireBulletComponent : IComponent
+{
+    public Vector3 Direction;
+}
+
+[Game]
+public class BulletSpawnPointComponent : IComponent
+{
+    public Transform Value;
 }
 
 // Player aim target flag

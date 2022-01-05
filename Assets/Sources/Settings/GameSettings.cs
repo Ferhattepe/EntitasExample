@@ -17,6 +17,16 @@ namespace Sources.Settings
             public float rotationSpeed;
             public float detectionInterval;
             public int baseHealth;
+            public float attackInterval;
+            public float attackRange;
+            public float attackDelay;
+            public GunSettings gun;
+
+            [Serializable]
+            public class GunSettings
+            {
+                public GameObject bulletPrefab;
+            }
         }
 
         [Serializable]

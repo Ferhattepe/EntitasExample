@@ -6479,6 +6479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatingJoystick: {fileID: 1634684585}
   playerObject: {fileID: 2039275602}
+  bulletSpawnPoint: {fileID: 1664604722}
   playerHealthSlider: {fileID: 1823443807}
   gameSettings: {fileID: 11400000, guid: afc7c7916c54ecd4abcc60a484cca050, type: 2}
   monsterSpawnPosition: {fileID: 688556257}

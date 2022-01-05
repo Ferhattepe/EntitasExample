@@ -14,21 +14,24 @@ public static class GameComponentsLookup {
     public const int AttackData = 3;
     public const int AttackState = 4;
     public const int BaseHealth = 5;
-    public const int CurrentHealth = 6;
-    public const int HealthView = 7;
-    public const int LookDirection = 8;
-    public const int Monster = 9;
-    public const int MonsterSpawn = 10;
-    public const int MovementDirection = 11;
-    public const int Player = 12;
-    public const int Position = 13;
-    public const int Rigidbody = 14;
-    public const int Speed = 15;
-    public const int Target = 16;
-    public const int VelocityLimit = 17;
-    public const int View = 18;
+    public const int BulletSpawnPoint = 6;
+    public const int CurrentHealth = 7;
+    public const int FireBullet = 8;
+    public const int HealthView = 9;
+    public const int LookDirection = 10;
+    public const int Monster = 11;
+    public const int MonsterSpawn = 12;
+    public const int MovementDirection = 13;
+    public const int NextAttackTime = 14;
+    public const int Player = 15;
+    public const int Position = 16;
+    public const int Rigidbody = 17;
+    public const int Speed = 18;
+    public const int Target = 19;
+    public const int VelocityLimit = 20;
+    public const int View = 21;
 
-    public const int TotalComponents = 19;
+    public const int TotalComponents = 22;
 
     public static readonly string[] componentNames = {
         "Aim",
@@ -37,12 +40,15 @@ public static class GameComponentsLookup {
         "AttackData",
         "AttackState",
         "BaseHealth",
+        "BulletSpawnPoint",
         "CurrentHealth",
+        "FireBullet",
         "HealthView",
         "LookDirection",
         "Monster",
         "MonsterSpawn",
         "MovementDirection",
+        "NextAttackTime",
         "Player",
         "Position",
         "Rigidbody",
@@ -59,12 +65,15 @@ public static class GameComponentsLookup {
         typeof(AttackDataComponent),
         typeof(AttackStateComponent),
         typeof(BaseHealthComponent),
+        typeof(BulletSpawnPointComponent),
         typeof(CurrentHealthComponent),
+        typeof(FireBulletComponent),
         typeof(HealthViewComponent),
         typeof(LookDirectionComponent),
         typeof(Monster),
         typeof(MonsterSpawnComponent),
         typeof(MovementDirectionComponent),
+        typeof(NextAttackTimeComponent),
         typeof(Player),
         typeof(PositionComponent),
         typeof(RigidbodyComponent),

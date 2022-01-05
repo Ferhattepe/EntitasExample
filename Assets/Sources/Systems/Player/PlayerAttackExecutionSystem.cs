@@ -1,16 +1,16 @@
 ﻿using Entitas;
 using UnityEngine;
-using DG.Tweening;
 
-namespace Sources.Systems
+namespace Sources.Systems.Player
 {
-    public class AttackStateSystem : IExecuteSystem
+    public class PlayerAttackExecutionSystem : IExecuteSystem, ICleanupSystem
     {
         private readonly IGroup<GameEntity> _group;
 
-        public AttackStateSystem(Contexts contexts)
+        public PlayerAttackExecutionSystem(Contexts contexts)
         {
-            _group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.AttackState, GameMatcher.AttackData,
+            _group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Player, GameMatcher.AttackState,
+                GameMatcher.AttackData,
                 GameMatcher.Target));
         }
 
@@ -28,14 +28,21 @@ namespace Sources.Systems
 
                         if (distance <= entity.attackData.Range)
                         {
-                            var newHealthValue = entity.target.Value.currentHealth.Value - 1;
-                            entity.target.Value.ReplaceCurrentHealth(newHealthValue);
+                            var bulletDirection = targetPosition - entity.bulletSpawnPoint.Value.position;
+                            entity.AddFireBullet(bulletDirection.normalized);
                         }
                     }
+                }
+            }
+        }
 
-                    entity.view.Value.transform.DOShakeScale(0.2f);
+        public void Cleanup()
+        {
+            foreach (var entity in _group.GetEntities())
+            {
+                if (entity.attackState.ExecutionTime <= Time.time)
+                {
                     entity.RemoveAttackState();
-                    entity.AddMovementDirection(Vector3.zero);
                 }
             }
         }

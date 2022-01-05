@@ -25,7 +25,6 @@ namespace Sources.Systems
         {
             foreach (var entity in entities)
             {
-                Debug.LogError("Health");
                 entity.healthView.Slider.maxValue = entity.baseHealth.Value;
                 entity.healthView.Slider.minValue = 0;
                 entity.healthView.Slider.value = entity.currentHealth.Value;

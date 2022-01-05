@@ -1,5 +1,7 @@
 using Sources.Settings;
 using Sources.Systems;
+using Sources.Systems.Monster;
+using Sources.Systems.Player;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +14,7 @@ namespace Sources.MonoBehaviours
         private Entitas.Systems _physicsSystems;
         [SerializeField] private FloatingJoystick floatingJoystick;
         [SerializeField] private GameObject playerObject;
+        [SerializeField] private Transform bulletSpawnPoint;
         [SerializeField] private Slider playerHealthSlider;
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private Transform monsterSpawnPosition;
@@ -30,7 +33,7 @@ namespace Sources.MonoBehaviours
                 .Add(new PhysicsVelocityLimitSystem(contexts));
 
             _systems = new Feature("Game_Systems")
-                .Add(new CreatePlayerSystem(contexts, playerObject, playerHealthSlider, gameSettings))
+                .Add(new CreatePlayerSystem(contexts, playerObject, playerHealthSlider, bulletSpawnPoint, gameSettings))
                 .Add(new MonsterSpawnSystem(contexts, monsterSpawnPosition, gameSettings))
                 .Add(new PlayerJoystickControlSystem(contexts))
                 .Add(new UpdateViewPositionSystem(contexts))
@@ -40,9 +43,12 @@ namespace Sources.MonoBehaviours
                 .Add(new MonsterNavmeshSystem(contexts))
                 .Add(new FindNearliestMonsterSystem(contexts, gameSettings))
                 .Add(new PlayerAimAnimationSystem(contexts))
-                .Add(new AttackStateSystem(contexts))
-                .Add(new AttackCheckSystem(contexts, gameSettings))
+                .Add(new MonsterBeginAttackStateSystem(contexts))
+                .Add(new MonsterAttackExecutionSystem(contexts))
+                .Add(new AttackCheckSystem(contexts))
                 .Add(new UpdateHealthViewComponent(contexts))
+                .Add(new PlayerAttackExecutionSystem(contexts))
+                .Add(new FireBulletSystem(contexts, gameSettings))
                 .Add(new CalculatePlayerForwardSystem(contexts, gameSettings));
 
 

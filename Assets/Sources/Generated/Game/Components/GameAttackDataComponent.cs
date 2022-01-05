@@ -11,21 +11,21 @@ public partial class GameEntity {
     public AttackDataComponent attackData { get { return (AttackDataComponent)GetComponent(GameComponentsLookup.AttackData); } }
     public bool hasAttackData { get { return HasComponent(GameComponentsLookup.AttackData); } }
 
-    public void AddAttackData(float newInterval, float newRange, float newLastTime) {
+    public void AddAttackData(float newInterval, float newRange, float newAttackDelay) {
         var index = GameComponentsLookup.AttackData;
         var component = (AttackDataComponent)CreateComponent(index, typeof(AttackDataComponent));
         component.Interval = newInterval;
         component.Range = newRange;
-        component.LastTime = newLastTime;
+        component.AttackDelay = newAttackDelay;
         AddComponent(index, component);
     }
 
-    public void ReplaceAttackData(float newInterval, float newRange, float newLastTime) {
+    public void ReplaceAttackData(float newInterval, float newRange, float newAttackDelay) {
         var index = GameComponentsLookup.AttackData;
         var component = (AttackDataComponent)CreateComponent(index, typeof(AttackDataComponent));
         component.Interval = newInterval;
         component.Range = newRange;
-        component.LastTime = newLastTime;
+        component.AttackDelay = newAttackDelay;
         ReplaceComponent(index, component);
     }
 

@@ -35,7 +35,9 @@ namespace Sources.Systems
                 entity.AddRigidbody(view.GetComponent<Rigidbody>());
                 entity.AddVelocityLimit(_settings.monster.velocityLimit);
                 entity.AddTarget(null);
-                entity.AddAttackData(_settings.monster.attackInterval, _settings.monster.attackRange, 0f);
+                entity.AddAttackData(_settings.monster.attackInterval, _settings.monster.attackRange,
+                    _settings.monster.attackDelay);
+                entity.AddNextAttackTime(Time.time + _settings.monster.attackInterval);
                 entity.AddMovementDirection(Vector3.zero);
                 entity.AddSpeed(_settings.monster.speed);
                 view.Link(entity);

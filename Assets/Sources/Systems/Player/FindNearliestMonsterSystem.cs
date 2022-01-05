@@ -22,7 +22,7 @@ namespace Sources.Systems
             var monsters = _monsters.GetEntities();
             foreach (var playerEntity in _player.GetEntities())
             {
-                var minDistance = _settings.player.detectionDistance;
+                var minDistance = _settings.player.attackRange;
                 GameEntity nearliestTarget = null;
                 foreach (var monsterEntity in monsters)
                 {

@@ -12,11 +12,14 @@ namespace Sources.Systems
         private readonly GameObject _playerObject;
         private readonly GameSettings _gameSettings;
         private readonly Slider _healthSlider;
+        private readonly Transform _bulletSpawnPoint;
 
         public CreatePlayerSystem(Contexts contexts, GameObject playerObject, Slider healthSlider,
+            Transform bulletSpawnPoint,
             GameSettings gameSettings)
         {
             _contexts = contexts;
+            _bulletSpawnPoint = bulletSpawnPoint;
             _playerObject = playerObject;
             _gameSettings = gameSettings;
             _healthSlider = healthSlider;
@@ -36,6 +39,10 @@ namespace Sources.Systems
             entity.AddBaseHealth(_gameSettings.player.baseHealth);
             entity.AddCurrentHealth(_gameSettings.player.baseHealth);
             entity.AddHealthView(_healthSlider);
+            entity.AddAttackData(_gameSettings.player.attackInterval, _gameSettings.player.attackRange,
+                _gameSettings.player.attackDelay);
+            entity.AddNextAttackTime(Time.time + _gameSettings.player.attackInterval);
+            entity.AddBulletSpawnPoint(_bulletSpawnPoint);
             _playerObject.Link(entity);
         }
     }
