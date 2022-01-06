@@ -52,6 +52,8 @@ namespace Sources.MonoBehaviours
                 .Add(new UpdateHealthViewComponent(contexts))
                 .Add(new PlayerAttackExecutionSystem(contexts))
                 .Add(new SpawnBulletSystem(contexts, gameSettings))
+                .Add(new BulletHitSystem(contexts))
+                .Add(new CheckDeathSystem(contexts))
                 .Add(new CalculatePlayerForwardSystem(contexts, gameSettings));
 
 

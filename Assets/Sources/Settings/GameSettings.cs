@@ -41,6 +41,7 @@ namespace Sources.Settings
             public float attackRange;
             public float attackInterval;
             public float attackDelay;
+            public int baseHealth;
         }
     }
 }

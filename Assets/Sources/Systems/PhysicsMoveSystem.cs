@@ -9,7 +9,8 @@ namespace Sources.Systems
 
         public PhysicsMoveSystem(Contexts contexts)
         {
-            _group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.MovementDirection, GameMatcher.Rigidbody,
+            _group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Alive, GameMatcher.MovementDirection,
+                GameMatcher.Rigidbody,
                 GameMatcher.Speed));
         }
 

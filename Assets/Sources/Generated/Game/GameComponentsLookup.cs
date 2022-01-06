@@ -29,10 +29,11 @@ public static class GameComponentsLookup {
     public const int Rigidbody = 18;
     public const int Speed = 19;
     public const int Target = 20;
-    public const int VelocityLimit = 21;
-    public const int View = 22;
+    public const int Trigger = 21;
+    public const int VelocityLimit = 22;
+    public const int View = 23;
 
-    public const int TotalComponents = 23;
+    public const int TotalComponents = 24;
 
     public static readonly string[] componentNames = {
         "Aim",
@@ -56,6 +57,7 @@ public static class GameComponentsLookup {
         "Rigidbody",
         "Speed",
         "Target",
+        "Trigger",
         "VelocityLimit",
         "View"
     };
@@ -82,6 +84,7 @@ public static class GameComponentsLookup {
         typeof(RigidbodyComponent),
         typeof(SpeedComponent),
         typeof(TargetComponent),
+        typeof(TriggerComponent),
         typeof(VelocityLimit),
         typeof(ViewComponent)
     };

@@ -29,11 +29,13 @@ namespace Sources.Systems
                     spawnPointTransform.position,
                     spawnPointTransform.rotation);
                 bulletObject.transform.forward = direction;
+                bulletEntity.isAlive = true;
                 bulletEntity.AddView(bulletObject);
                 bulletEntity.AddMovementDirection(direction);
                 bulletEntity.AddSpeed(_settings.player.gun.speed);
                 bulletEntity.AddRigidbody(bulletObject.GetComponent<Rigidbody>());
                 bulletObject.Link(bulletEntity);
+                bulletEntity.OnDestroyEntity += (entity) => { GameObject.Destroy(bulletObject); };
             }
         }
 

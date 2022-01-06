@@ -1,3 +1,4 @@
+using System;
 using Entitas;
 using Entitas.Unity;
 using UnityEngine;
@@ -13,10 +14,9 @@ namespace Sources.MonoBehaviours.Emitters
             if (collision.collider.CompareTag(targetTag))
             {
                 var self = gameObject.GetEntityLink();
-                var other = collision.collider.gameObject.GetEntityLink();
-                
+                var target = collision.collider.gameObject.GetEntityLink();
                 Contexts.sharedInstance.input.CreateEntity()
-                    .AddCollision(self, other);
+                    .AddCollision(self, target);
             }
         }
     }

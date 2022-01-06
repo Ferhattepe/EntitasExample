@@ -158,3 +158,10 @@ public class CollisionComponent : IComponent
     public EntityLink Self;
     public EntityLink Other;
 }
+
+[Game]
+public class TriggerComponent : IComponent
+{
+    public GameEntity Self;
+    public GameEntity Other;
+}

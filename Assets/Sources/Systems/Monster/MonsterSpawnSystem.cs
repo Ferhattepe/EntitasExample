@@ -40,6 +40,8 @@ namespace Sources.Systems
                 entity.AddNextAttackTime(Time.time + _settings.monster.attackInterval);
                 entity.AddMovementDirection(Vector3.zero);
                 entity.AddSpeed(_settings.monster.speed);
+                entity.AddBaseHealth(_settings.monster.baseHealth);
+                entity.AddCurrentHealth(_settings.monster.baseHealth);
                 view.Link(entity);
                 _contexts.game.monsterSpawn.NextSpawnTime = Time.time + _settings.monster.spawnInterval;
             }

@@ -9,7 +9,8 @@ namespace Sources.Systems
 
         public MoveSystem(Contexts contexts)
         {
-            _group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.MovementDirection, GameMatcher.Position,
+            _group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Alive, GameMatcher.MovementDirection,
+                GameMatcher.Position,
                 GameMatcher.Speed));
         }
 
