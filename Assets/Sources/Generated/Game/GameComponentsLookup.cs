@@ -17,21 +17,22 @@ public static class GameComponentsLookup {
     public const int BulletSpawnPoint = 6;
     public const int CurrentHealth = 7;
     public const int FireBullet = 8;
-    public const int HealthView = 9;
-    public const int LookDirection = 10;
-    public const int Monster = 11;
-    public const int MonsterSpawn = 12;
-    public const int MovementDirection = 13;
-    public const int NextAttackTime = 14;
-    public const int Player = 15;
-    public const int Position = 16;
-    public const int Rigidbody = 17;
-    public const int Speed = 18;
-    public const int Target = 19;
-    public const int VelocityLimit = 20;
-    public const int View = 21;
+    public const int GunView = 9;
+    public const int HealthView = 10;
+    public const int LookDirection = 11;
+    public const int Monster = 12;
+    public const int MonsterSpawn = 13;
+    public const int MovementDirection = 14;
+    public const int NextAttackTime = 15;
+    public const int Player = 16;
+    public const int Position = 17;
+    public const int Rigidbody = 18;
+    public const int Speed = 19;
+    public const int Target = 20;
+    public const int VelocityLimit = 21;
+    public const int View = 22;
 
-    public const int TotalComponents = 22;
+    public const int TotalComponents = 23;
 
     public static readonly string[] componentNames = {
         "Aim",
@@ -43,6 +44,7 @@ public static class GameComponentsLookup {
         "BulletSpawnPoint",
         "CurrentHealth",
         "FireBullet",
+        "GunView",
         "HealthView",
         "LookDirection",
         "Monster",
@@ -68,6 +70,7 @@ public static class GameComponentsLookup {
         typeof(BulletSpawnPointComponent),
         typeof(CurrentHealthComponent),
         typeof(FireBulletComponent),
+        typeof(GunView),
         typeof(HealthViewComponent),
         typeof(LookDirectionComponent),
         typeof(Monster),

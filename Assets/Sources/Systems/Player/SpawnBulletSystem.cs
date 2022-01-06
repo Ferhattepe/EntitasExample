@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace Sources.Systems
 {
-    public class FireBulletSystem : IExecuteSystem, ICleanupSystem
+    public class SpawnBulletSystem : IExecuteSystem, ICleanupSystem
     {
         private IGroup<GameEntity> _group;
         private GameContext _game;
         private GameSettings _settings;
 
-        public FireBulletSystem(Contexts contexts, GameSettings settings)
+        public SpawnBulletSystem(Contexts contexts, GameSettings settings)
         {
             _group = contexts.game.GetGroup(GameMatcher.FireBullet);
             _game = contexts.game;
@@ -24,10 +24,15 @@ namespace Sources.Systems
             {
                 var bulletEntity = _game.CreateEntity();
                 var spawnPointTransform = entity.bulletSpawnPoint.Value;
+                var direction = entity.fireBullet.Direction;
                 var bulletObject = GameObject.Instantiate(_settings.player.gun.bulletPrefab,
                     spawnPointTransform.position,
                     spawnPointTransform.rotation);
+                bulletObject.transform.forward = direction;
                 bulletEntity.AddView(bulletObject);
+                bulletEntity.AddMovementDirection(direction);
+                bulletEntity.AddSpeed(_settings.player.gun.speed);
+                bulletEntity.AddRigidbody(bulletObject.GetComponent<Rigidbody>());
                 bulletObject.Link(bulletEntity);
             }
         }

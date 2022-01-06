@@ -23,12 +23,13 @@ MonoBehaviour:
     attackDelay: 0.1
     gun:
       bulletPrefab: {fileID: 3020408427058967830, guid: 1b18ca8c7404b5c438a193c4df9d9b41, type: 3}
+      speed: 12
   monster:
     prefab: {fileID: 3138077149829896246, guid: fdbd534f52aaea74e87de828c7a63968, type: 3}
-    speed: 1000
+    speed: 2
     spawnInterval: 10
     velocityLimit: 1
     detectionInterval: 1
     attackRange: 3
-    attackInterval: 1
+    attackInterval: 3
     attackDelay: 1

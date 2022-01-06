@@ -1,4 +1,5 @@
 ﻿using Entitas;
+using UnityEngine;
 
 namespace Sources.Systems
 {
@@ -17,7 +18,8 @@ namespace Sources.Systems
             foreach (var entity in _group.GetEntities())
             {
                 var direction = entity.movementDirection.Value;
-                entity.rigidbody.Value.AddForce(direction * entity.speed.Value);
+                entity.rigidbody.Value.position += direction * entity.speed.Value * Time.fixedDeltaTime;
+                // entity.rigidbody.Value.AddForce(direction * entity.speed.Value);
             }
         }
     }

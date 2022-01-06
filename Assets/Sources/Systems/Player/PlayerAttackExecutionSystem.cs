@@ -29,7 +29,9 @@ namespace Sources.Systems.Player
                         if (distance <= entity.attackData.Range)
                         {
                             var bulletDirection = targetPosition - entity.bulletSpawnPoint.Value.position;
+                            bulletDirection.y = 0;
                             entity.AddFireBullet(bulletDirection.normalized);
+                            entity.gunView.GunfireController.FireWeapon();
                         }
                     }
                 }

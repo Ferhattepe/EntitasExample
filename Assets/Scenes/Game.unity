@@ -1980,7 +1980,6 @@ GameObject:
   m_Component:
   - component: {fileID: 734988220}
   - component: {fileID: 734988219}
-  - component: {fileID: 734988221}
   m_Layer: 7
   m_Name: Assault_Rifle_M4
   m_TagString: Untagged
@@ -2031,18 +2030,6 @@ Transform:
   m_Father: {fileID: 565016681}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 9.641, y: 21.947, z: 4.645}
---- !u!114 &734988221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 734988218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66b1ca7ca383f8f4094b69775eff2234, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &736809355
 GameObject:
   m_ObjectHideFlags: 0
@@ -5170,13 +5157,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664604721}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 2.45, y: 0, z: 0.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 734988220}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1678243158
 GameObject:
   m_ObjectHideFlags: 0
@@ -6483,6 +6470,7 @@ MonoBehaviour:
   playerHealthSlider: {fileID: 1823443807}
   gameSettings: {fileID: 11400000, guid: afc7c7916c54ecd4abcc60a484cca050, type: 2}
   monsterSpawnPosition: {fileID: 688556257}
+  gunfireController: {fileID: 734988219}
 --- !u!4 &2033650645
 Transform:
   m_ObjectHideFlags: 0

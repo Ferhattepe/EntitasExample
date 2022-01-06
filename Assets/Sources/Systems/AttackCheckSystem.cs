@@ -10,7 +10,8 @@ namespace Sources.Systems
         public AttackCheckSystem(Contexts contexts)
         {
             _group = contexts.game.GetGroup(GameMatcher.AllOf(
-                GameMatcher.NextAttackTime, GameMatcher.AttackData, GameMatcher.Target));
+                    GameMatcher.NextAttackTime, GameMatcher.AttackData, GameMatcher.Target)
+                .NoneOf(GameMatcher.AttackState));
         }
 
         public void Execute()

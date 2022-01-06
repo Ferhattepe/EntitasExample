@@ -1,4 +1,5 @@
-﻿using Entitas;
+﻿using BigRookGames.Weapons;
+using Entitas;
 using Entitas.Unity;
 using Sources.Settings;
 using UnityEngine;
@@ -13,9 +14,12 @@ namespace Sources.Systems
         private readonly GameSettings _gameSettings;
         private readonly Slider _healthSlider;
         private readonly Transform _bulletSpawnPoint;
+        private readonly GunfireController _gunFireController;
+
 
         public CreatePlayerSystem(Contexts contexts, GameObject playerObject, Slider healthSlider,
             Transform bulletSpawnPoint,
+            GunfireController gunfireController,
             GameSettings gameSettings)
         {
             _contexts = contexts;
@@ -23,6 +27,7 @@ namespace Sources.Systems
             _playerObject = playerObject;
             _gameSettings = gameSettings;
             _healthSlider = healthSlider;
+            _gunFireController = gunfireController;
         }
 
         public void Initialize()
@@ -43,6 +48,7 @@ namespace Sources.Systems
                 _gameSettings.player.attackDelay);
             entity.AddNextAttackTime(Time.time + _gameSettings.player.attackInterval);
             entity.AddBulletSpawnPoint(_bulletSpawnPoint);
+            entity.AddGunView(_gunFireController);
             _playerObject.Link(entity);
         }
     }

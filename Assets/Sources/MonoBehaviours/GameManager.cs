@@ -1,3 +1,4 @@
+using BigRookGames.Weapons;
 using Sources.Settings;
 using Sources.Systems;
 using Sources.Systems.Monster;
@@ -18,6 +19,7 @@ namespace Sources.MonoBehaviours
         [SerializeField] private Slider playerHealthSlider;
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private Transform monsterSpawnPosition;
+        [SerializeField] private GunfireController gunfireController;
 
 
         private void Awake()
@@ -33,7 +35,8 @@ namespace Sources.MonoBehaviours
                 .Add(new PhysicsVelocityLimitSystem(contexts));
 
             _systems = new Feature("Game_Systems")
-                .Add(new CreatePlayerSystem(contexts, playerObject, playerHealthSlider, bulletSpawnPoint, gameSettings))
+                .Add(new CreatePlayerSystem(contexts, playerObject, playerHealthSlider, bulletSpawnPoint,
+                    gunfireController, gameSettings))
                 .Add(new MonsterSpawnSystem(contexts, monsterSpawnPosition, gameSettings))
                 .Add(new PlayerJoystickControlSystem(contexts))
                 .Add(new UpdateViewPositionSystem(contexts))
@@ -48,7 +51,7 @@ namespace Sources.MonoBehaviours
                 .Add(new AttackCheckSystem(contexts))
                 .Add(new UpdateHealthViewComponent(contexts))
                 .Add(new PlayerAttackExecutionSystem(contexts))
-                .Add(new FireBulletSystem(contexts, gameSettings))
+                .Add(new SpawnBulletSystem(contexts, gameSettings))
                 .Add(new CalculatePlayerForwardSystem(contexts, gameSettings));
 
 

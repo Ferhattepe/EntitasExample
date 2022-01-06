@@ -26,6 +26,7 @@ namespace Sources.Settings
             public class GunSettings
             {
                 public GameObject bulletPrefab;
+                public float speed;
             }
         }
 

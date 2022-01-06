@@ -1,3 +1,4 @@
+using BigRookGames.Weapons;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using Entitas.Unity;
@@ -53,6 +54,12 @@ public class AttackDataComponent : IComponent
 public class FireBulletComponent : IComponent
 {
     public Vector3 Direction;
+}
+
+[Game]
+public class GunView : IComponent
+{
+    public GunfireController GunfireController;
 }
 
 [Game]
