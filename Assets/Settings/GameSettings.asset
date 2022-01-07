@@ -33,4 +33,4 @@ MonoBehaviour:
     attackRange: 3
     attackInterval: 3
     attackDelay: 1
-    baseHealth: 10
+    baseHealth: 5
