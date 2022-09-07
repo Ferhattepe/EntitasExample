@@ -6,26 +6,20 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class GameEntity
+{
 
     public AttackStateComponent attackState { get { return (AttackStateComponent)GetComponent(GameComponentsLookup.AttackState); } }
     public bool hasAttackState { get { return HasComponent(GameComponentsLookup.AttackState); } }
 
-    public void AddAttackState(float newExecutionTime) {
+    public void AddAttackState()
+    {
         var index = GameComponentsLookup.AttackState;
         var component = (AttackStateComponent)CreateComponent(index, typeof(AttackStateComponent));
-        component.ExecutionTime = newExecutionTime;
         AddComponent(index, component);
     }
-
-    public void ReplaceAttackState(float newExecutionTime) {
-        var index = GameComponentsLookup.AttackState;
-        var component = (AttackStateComponent)CreateComponent(index, typeof(AttackStateComponent));
-        component.ExecutionTime = newExecutionTime;
-        ReplaceComponent(index, component);
-    }
-
-    public void RemoveAttackState() {
+    public void RemoveAttackState()
+    {
         RemoveComponent(GameComponentsLookup.AttackState);
     }
 }
@@ -38,13 +32,17 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class GameMatcher
+{
 
     static Entitas.IMatcher<GameEntity> _matcherAttackState;
 
-    public static Entitas.IMatcher<GameEntity> AttackState {
-        get {
-            if (_matcherAttackState == null) {
+    public static Entitas.IMatcher<GameEntity> AttackState
+    {
+        get
+        {
+            if (_matcherAttackState == null)
+            {
                 var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.AttackState);
                 matcher.componentNames = GameComponentsLookup.componentNames;
                 _matcherAttackState = matcher;

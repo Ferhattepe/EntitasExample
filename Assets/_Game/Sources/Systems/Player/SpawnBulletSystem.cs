@@ -35,7 +35,11 @@ namespace Sources.Systems
                 bulletEntity.AddSpeed(_settings.player.gun.speed);
                 bulletEntity.AddRigidbody(bulletObject.GetComponent<Rigidbody>());
                 bulletObject.Link(bulletEntity);
-                bulletEntity.OnDestroyEntity += (entity) => { GameObject.Destroy(bulletObject); };
+                bulletEntity.OnDestroyEntity += (entity) =>
+                {
+                    bulletObject.Unlink();
+                    GameObject.Destroy(bulletObject);
+                };
             }
         }
 

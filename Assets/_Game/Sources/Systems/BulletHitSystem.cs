@@ -28,7 +28,8 @@ namespace Sources.Systems
             foreach (var entity in entities)
             {
                 var target = entity.trigger.Other;
-                target.ReplaceCurrentHealth(target.currentHealth.Value - 1);
+                if (target.hasCurrentHealth)
+                    target.ReplaceCurrentHealth(target.currentHealth.Value - 1);
             }
         }
 

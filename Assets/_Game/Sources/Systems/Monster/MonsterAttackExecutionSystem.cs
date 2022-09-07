@@ -1,15 +1,16 @@
 ﻿using Entitas;
 using UnityEngine;
+using DG.Tweening;
 
-namespace Sources.Systems.Player
+namespace Sources.Systems
 {
-    public class PlayerAttackExecutionSystem : IExecuteSystem, ICleanupSystem
+    public class MonsterAttackExecutionSystem : IExecuteSystem, ICleanupSystem
     {
         private readonly IGroup<GameEntity> _group;
 
-        public PlayerAttackExecutionSystem(Contexts contexts)
+        public MonsterAttackExecutionSystem(Contexts contexts)
         {
-            _group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Player, GameMatcher.AttackState,
+            _group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Monster, GameMatcher.AttackState,
                 GameMatcher.AttackData,
                 GameMatcher.Target));
         }
@@ -18,7 +19,7 @@ namespace Sources.Systems.Player
         {
             foreach (var entity in _group.GetEntities())
             {
-                if (entity.attackState.ExecutionTime <= Time.time)
+                if (entity.hasAttackState)
                 {
                     if (entity.target.Value != null)
                     {
@@ -28,12 +29,13 @@ namespace Sources.Systems.Player
 
                         if (distance <= entity.attackData.Range)
                         {
-                            var bulletDirection = targetPosition - entity.bulletSpawnPoint.Value.position;
-                            bulletDirection.y = 0;
-                            entity.AddFireBullet(bulletDirection.normalized);
-                            entity.gunView.GunfireController.FireWeapon();
+                            var newHealthValue = entity.target.Value.currentHealth.Value - 1;
+                            entity.target.Value.ReplaceCurrentHealth(newHealthValue);
                         }
                     }
+
+                    entity.view.Value.transform.DOShakeScale(0.2f);
+                    entity.AddMovementDirection(Vector3.zero);
                 }
             }
         }
@@ -42,7 +44,7 @@ namespace Sources.Systems.Player
         {
             foreach (var entity in _group.GetEntities())
             {
-                if (entity.attackState.ExecutionTime <= Time.time)
+                if (entity.hasAttackState)
                 {
                     entity.RemoveAttackState();
                 }

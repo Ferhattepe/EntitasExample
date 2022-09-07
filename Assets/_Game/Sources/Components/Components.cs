@@ -32,7 +32,6 @@ public class TargetComponent : IComponent
 [Game]
 public class AttackStateComponent : IComponent
 {
-    public float ExecutionTime;
 }
 
 

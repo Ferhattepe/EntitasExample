@@ -19,14 +19,15 @@ namespace Sources.Systems
             foreach (var entity in _group.GetEntities())
             {
                 if (entity.target.Value == null) continue;
-                if (entity.nextAttackTime.Value <= Time.time)
+                var distance = Vector3.Distance(entity.target.Value.view.Value.transform.position,
+                      entity.view.Value.transform.position);
+
+                if (distance <= entity.attackData.Range)
                 {
-                    var distance = Vector3.Distance(entity.target.Value.view.Value.transform.position,
-                        entity.view.Value.transform.position);
-                    if (distance <= entity.attackData.Range)
+                    if (entity.nextAttackTime.Value <= Time.time)
                     {
                         entity.ReplaceNextAttackTime(Time.time + entity.attackData.Interval);
-                        entity.AddAttackState(Time.time + entity.attackData.AttackDelay);
+                        entity.AddAttackState();
                     }
                 }
             }

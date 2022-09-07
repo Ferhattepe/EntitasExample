@@ -1,17 +1,15 @@
 ﻿using Entitas;
 using UnityEngine;
-using DG.Tweening;
-using Sources.Settings;
 
-namespace Sources.Systems
+namespace Sources.Systems.Player
 {
-    public class MonsterAttackExecutionSystem : IExecuteSystem, ICleanupSystem
+    public class PlayerAttackExecutionSystem : IExecuteSystem, ICleanupSystem
     {
         private readonly IGroup<GameEntity> _group;
 
-        public MonsterAttackExecutionSystem(Contexts contexts)
+        public PlayerAttackExecutionSystem(Contexts contexts)
         {
-            _group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Monster, GameMatcher.AttackState,
+            _group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Player, GameMatcher.AttackState,
                 GameMatcher.AttackData,
                 GameMatcher.Target));
         }
@@ -20,7 +18,7 @@ namespace Sources.Systems
         {
             foreach (var entity in _group.GetEntities())
             {
-                if (entity.attackState.ExecutionTime <= Time.time)
+                if (entity.hasAttackState)
                 {
                     if (entity.target.Value != null)
                     {
@@ -30,13 +28,12 @@ namespace Sources.Systems
 
                         if (distance <= entity.attackData.Range)
                         {
-                            var newHealthValue = entity.target.Value.currentHealth.Value - 1;
-                            entity.target.Value.ReplaceCurrentHealth(newHealthValue);
+                            var bulletDirection = targetPosition - entity.bulletSpawnPoint.Value.position;
+                            bulletDirection.y = 0;
+                            entity.AddFireBullet(bulletDirection.normalized);
+                            entity.gunView.GunfireController.FireWeapon();
                         }
                     }
-
-                    entity.view.Value.transform.DOShakeScale(0.2f);
-                    entity.AddMovementDirection(Vector3.zero);
                 }
             }
         }
@@ -45,7 +42,7 @@ namespace Sources.Systems
         {
             foreach (var entity in _group.GetEntities())
             {
-                if (entity.attackState.ExecutionTime <= Time.time)
+                if (entity.hasAttackState)
                 {
                     entity.RemoveAttackState();
                 }

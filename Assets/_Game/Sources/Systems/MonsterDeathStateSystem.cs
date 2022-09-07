@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using DG.Tweening;
 using Entitas;
+using Entitas.Unity;
 using UnityEngine;
 
 namespace Sources.Systems
@@ -20,7 +21,11 @@ namespace Sources.Systems
             {
                 var monsterObject = entity.view.Value;
                 entity.view.Value.transform.DOScale(0, 0.5f)
-                    .OnComplete(() => { GameObject.Destroy(monsterObject); });
+                    .OnComplete(() =>
+                    {
+                        monsterObject.Unlink();
+                        GameObject.Destroy(monsterObject);
+                    });
                 entity.Destroy();
             }
         }
