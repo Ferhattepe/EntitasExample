@@ -41,6 +41,7 @@ namespace Sources.MonoBehaviours
                 .Add(new PlayerJoystickControlSystem(contexts))
                 .Add(new UpdateViewPositionSystem(contexts))
                 .Add(new MoveSystem(contexts))
+                .Add(new LookUpToDirectionSystem(contexts))
                 .Add(new MovementAnimationSystem(contexts))
                 .Add(new MonsterFindTargetSystem(contexts, gameSettings))
                 .Add(new MonsterNavmeshSystem(contexts))

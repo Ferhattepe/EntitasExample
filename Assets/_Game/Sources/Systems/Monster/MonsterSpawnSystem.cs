@@ -33,6 +33,7 @@ namespace Sources.Systems
                 entity.isAlive = true;
                 entity.AddView(view);
                 entity.AddRigidbody(view.GetComponent<Rigidbody>());
+                entity.AddAnimation(view.GetComponentInChildren<Animator>());
                 entity.AddVelocityLimit(_settings.monster.velocityLimit);
                 entity.AddTarget(null);
                 entity.AddAttackData(_settings.monster.attackInterval, _settings.monster.attackRange,

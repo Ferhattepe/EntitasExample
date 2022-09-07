@@ -23,11 +23,25 @@ public class Alive : IComponent
 {
 }
 
+// Idle flag
+[Game]
+public class Idle : IComponent
+{
+}
+
+// Run flag
+[Game]
+public class Run : IComponent
+{
+}
+
+
 [Game]
 public class TargetComponent : IComponent
 {
     public GameEntity Value;
 }
+
 
 [Game]
 public class AttackStateComponent : IComponent
