@@ -3,14 +3,14 @@ using UnityEngine;
 
 namespace Sources.Systems
 {
-    public class MovementAnimationSystem : IExecuteSystem
+    public class PlayerAnimationSystem : IExecuteSystem
     {
         private readonly IGroup<GameEntity> _group;
         private static readonly int VelocityX = Animator.StringToHash("VelocityX");
         private static readonly int VelocityZ = Animator.StringToHash("VelocityZ");
-        private static readonly int Run = Animator.StringToHash("run");
+        private static readonly int RunKey = Animator.StringToHash("run");
 
-        public MovementAnimationSystem(Contexts contexts)
+        public PlayerAnimationSystem(Contexts contexts)
         {
             _group = contexts.game.GetGroup(GameMatcher.Player);
         }
@@ -21,7 +21,7 @@ namespace Sources.Systems
             {
                 var movementDirection = entity.movementDirection.Value;
                 var isRun = movementDirection.magnitude > 0;
-                entity.animation.Value.SetBool(Run, isRun);
+                entity.animation.Value.SetBool(RunKey, isRun);
                 var velocityZ = Vector3.Dot(movementDirection, entity.view.Value.transform.forward);
                 var velocityX = Vector3.Dot(movementDirection, entity.view.Value.transform.right);
                 entity.animation.Value.SetFloat(VelocityX, velocityX, 0.1f, Time.deltaTime);

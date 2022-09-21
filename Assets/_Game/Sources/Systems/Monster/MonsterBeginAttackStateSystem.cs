@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Entitas;
+using UnityEngine;
 
 namespace Sources.Systems.Monster
 {
@@ -11,19 +12,21 @@ namespace Sources.Systems.Monster
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
-            return context.CreateCollector(GameMatcher.AttackState);
+            return context.CreateCollector(GameMatcher.Attack);
         }
 
         protected override bool Filter(GameEntity entity)
         {
-            return entity.isMonster && entity.hasMovementDirection;
+            return entity.isMonster && entity.isAttack;
         }
 
         protected override void Execute(List<GameEntity> entities)
         {
-            foreach (var gameEntity in entities)
+            foreach (var entity in entities)
             {
-                gameEntity.RemoveMovementDirection();
+                Debug.LogError("AttackExecute");
+                entity.isRun = false;
+                entity.RemoveMovementDirection();
             }
         }
     }

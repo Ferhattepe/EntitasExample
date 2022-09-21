@@ -11,7 +11,7 @@ namespace Sources.Systems
         {
             _group = contexts.game.GetGroup(GameMatcher.AllOf(
                     GameMatcher.NextAttackTime, GameMatcher.AttackData, GameMatcher.Target)
-                .NoneOf(GameMatcher.AttackState));
+                .NoneOf(GameMatcher.Attack));
         }
 
         public void Execute()
@@ -27,7 +27,7 @@ namespace Sources.Systems
                     if (entity.nextAttackTime.Value <= Time.time)
                     {
                         entity.ReplaceNextAttackTime(Time.time + entity.attackData.Interval);
-                        entity.AddAttackState();
+                        entity.isAttack = true;
                     }
                 }
             }

@@ -10,7 +10,7 @@ namespace Sources.Systems
 
         public MonsterAttackExecutionSystem(Contexts contexts)
         {
-            _group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Monster, GameMatcher.AttackState,
+            _group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Monster, GameMatcher.Attack,
                 GameMatcher.AttackData,
                 GameMatcher.Target));
         }
@@ -19,7 +19,7 @@ namespace Sources.Systems
         {
             foreach (var entity in _group.GetEntities())
             {
-                if (entity.hasAttackState)
+                if (entity.isAttack)
                 {
                     if (entity.target.Value != null)
                     {
@@ -33,7 +33,6 @@ namespace Sources.Systems
                             entity.target.Value.ReplaceCurrentHealth(newHealthValue);
                         }
                     }
-
                     entity.view.Value.transform.DOShakeScale(0.2f);
                     entity.AddMovementDirection(Vector3.zero);
                 }
@@ -44,9 +43,9 @@ namespace Sources.Systems
         {
             foreach (var entity in _group.GetEntities())
             {
-                if (entity.hasAttackState)
+                if (entity.isAttack)
                 {
-                    entity.RemoveAttackState();
+                    entity.isAttack = false;
                 }
             }
         }

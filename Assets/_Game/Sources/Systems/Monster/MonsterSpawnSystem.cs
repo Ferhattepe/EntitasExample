@@ -32,10 +32,10 @@ namespace Sources.Systems
                 entity.isMonster = true;
                 entity.isAlive = true;
                 entity.AddView(view);
+                entity.AddTarget(null);
                 entity.AddRigidbody(view.GetComponent<Rigidbody>());
                 entity.AddAnimation(view.GetComponentInChildren<Animator>());
                 entity.AddVelocityLimit(_settings.monster.velocityLimit);
-                entity.AddTarget(null);
                 entity.AddAttackData(_settings.monster.attackInterval, _settings.monster.attackRange,
                     _settings.monster.attackDelay);
                 entity.AddNextAttackTime(Time.time + _settings.monster.attackInterval);

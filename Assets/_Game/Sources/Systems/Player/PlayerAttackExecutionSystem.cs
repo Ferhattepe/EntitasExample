@@ -9,16 +9,16 @@ namespace Sources.Systems.Player
 
         public PlayerAttackExecutionSystem(Contexts contexts)
         {
-            _group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Player, GameMatcher.AttackState,
+            _group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Player, GameMatcher.Attack,
                 GameMatcher.AttackData,
                 GameMatcher.Target));
-        }
+        } 
 
         public void Execute()
         {
             foreach (var entity in _group.GetEntities())
             {
-                if (entity.hasAttackState)
+                if (entity.isAttack)
                 {
                     if (entity.target.Value != null)
                     {
@@ -42,9 +42,9 @@ namespace Sources.Systems.Player
         {
             foreach (var entity in _group.GetEntities())
             {
-                if (entity.hasAttackState)
+                if (entity.isAttack)
                 {
-                    entity.RemoveAttackState();
+                    entity.isAttack = false;
                 }
             }
         }

@@ -11,42 +11,45 @@ public static class GameComponentsLookup {
     public const int Aim = 0;
     public const int Alive = 1;
     public const int Animation = 2;
-    public const int AttackData = 3;
-    public const int AttackState = 4;
+    public const int Attack = 3;
+    public const int AttackData = 4;
     public const int BaseHealth = 5;
     public const int BulletSpawnPoint = 6;
     public const int CurrentHealth = 7;
     public const int FireBullet = 8;
     public const int GunView = 9;
     public const int HealthView = 10;
-    public const int LookDirection = 11;
-    public const int Monster = 12;
-    public const int MonsterSpawn = 13;
-    public const int MovementDirection = 14;
-    public const int NextAttackTime = 15;
-    public const int Player = 16;
-    public const int Position = 17;
-    public const int Rigidbody = 18;
-    public const int Speed = 19;
-    public const int Target = 20;
-    public const int Trigger = 21;
-    public const int VelocityLimit = 22;
-    public const int View = 23;
+    public const int Idle = 11;
+    public const int LookDirection = 12;
+    public const int Monster = 13;
+    public const int MonsterSpawn = 14;
+    public const int MovementDirection = 15;
+    public const int NextAttackTime = 16;
+    public const int Player = 17;
+    public const int Position = 18;
+    public const int Rigidbody = 19;
+    public const int Run = 20;
+    public const int Speed = 21;
+    public const int Target = 22;
+    public const int Trigger = 23;
+    public const int VelocityLimit = 24;
+    public const int View = 25;
 
-    public const int TotalComponents = 24;
+    public const int TotalComponents = 26;
 
     public static readonly string[] componentNames = {
         "Aim",
         "Alive",
         "Animation",
+        "Attack",
         "AttackData",
-        "AttackState",
         "BaseHealth",
         "BulletSpawnPoint",
         "CurrentHealth",
         "FireBullet",
         "GunView",
         "HealthView",
+        "Idle",
         "LookDirection",
         "Monster",
         "MonsterSpawn",
@@ -55,6 +58,7 @@ public static class GameComponentsLookup {
         "Player",
         "Position",
         "Rigidbody",
+        "Run",
         "Speed",
         "Target",
         "Trigger",
@@ -66,14 +70,15 @@ public static class GameComponentsLookup {
         typeof(Aim),
         typeof(Alive),
         typeof(AnimationComponent),
+        typeof(Attack),
         typeof(AttackDataComponent),
-        typeof(AttackStateComponent),
         typeof(BaseHealthComponent),
         typeof(BulletSpawnPointComponent),
         typeof(CurrentHealthComponent),
         typeof(FireBulletComponent),
         typeof(GunView),
         typeof(HealthViewComponent),
+        typeof(Idle),
         typeof(LookDirectionComponent),
         typeof(Monster),
         typeof(MonsterSpawnComponent),
@@ -82,6 +87,7 @@ public static class GameComponentsLookup {
         typeof(Player),
         typeof(PositionComponent),
         typeof(RigidbodyComponent),
+        typeof(Run),
         typeof(SpeedComponent),
         typeof(TargetComponent),
         typeof(TriggerComponent),

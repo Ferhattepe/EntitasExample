@@ -22,19 +22,22 @@ public class Monster : IComponent
 public class Alive : IComponent
 {
 }
-
 // Idle flag
 [Game]
 public class Idle : IComponent
 {
 }
-
 // Run flag
 [Game]
 public class Run : IComponent
 {
 }
 
+// Attack flag
+[Game]
+public class Attack : IComponent
+{
+}
 
 [Game]
 public class TargetComponent : IComponent
@@ -43,18 +46,12 @@ public class TargetComponent : IComponent
 }
 
 
-[Game]
-public class AttackStateComponent : IComponent
-{
-}
-
 
 [Game]
 public class NextAttackTimeComponent : IComponent
 {
     public float Value;
 }
-
 [Game]
 public class AttackDataComponent : IComponent
 {
@@ -62,7 +59,6 @@ public class AttackDataComponent : IComponent
     public float Range;
     public float AttackDelay;
 }
-
 [Game]
 public class FireBulletComponent : IComponent
 {
